@@ -1,6 +1,7 @@
 import React, { useState, useContext} from 'react'
-import ReadingsContext from '../context/readings-context'
+import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
+import ReadingsContext from '../context/readings-context'
 
 
 const ReadingForm = () => {
@@ -9,18 +10,30 @@ const ReadingForm = () => {
   const [ dayReading, setDayReading ] = useState('')
   const [ nightReading, setNightReading] =useState('')
 
-  const hello = "a123"
-  if (hello.match(/^[0-9]*$/)) {
-    console.log(hello)
-  }else {
-    console.log('mope')
+  const onDayReadingChange = (e) => {
+    const dayReading = (e.target.value)
+    if (!dayReading || dayReading.match(/^[0-9]*$/)) {
+      setDayReading(dayReading) 
+    }
+  }
+  const onNightReadingChange = (e) => {
+    const nightReading = (e.target.value)
+    if (!nightReading || nightReading.match(/^[0-9]*$/)) {
+      setNightReading(nightReading) 
+    }
   }
 
+  const onDateChange = (e) => {
+    const date = (e.target.value)
+    if (!date || date.match(/^\d{0,2}-{0,1}\d{0,2}-{0,1}\d{0,4}$/)) {
+      setDate(date) 
+    }
+  }
   const addReading = (e) => {
     e.preventDefault()
-    console.log(moment(date,'DD-MM-YYYY').valueOf())
     dispatch({
         type: 'ADD_READING',
+        id:uuidv4(),
         date:moment(date,'DD-MM-YYYY').valueOf(),
         dayReading,
         nightReading
@@ -36,12 +49,12 @@ const ReadingForm = () => {
         type="text" 
         name="date"
         value={date} 
-        onChange={(e) => setDate(e.target.value)}
+        onChange={onDateChange}
       />
       <label htmlFor="day-reading">Day reading</label>
-      <input type="text" name="day-reading" value={dayReading} onChange={(e) => setDayReading(e.target.value)} />
+      <input type="text" name="day-reading" value={dayReading} onChange={onDayReadingChange} />
       <label htmlFor="night-reading">Night reading</label>
-      <input type="text" name="night-reading" value={nightReading} onChange={(e) => setNightReading(e.target.value)} />
+      <input type="text" name="night-reading" value={nightReading} onChange={onNightReadingChange} />
       <button>Submit</button>
     </form>
   )

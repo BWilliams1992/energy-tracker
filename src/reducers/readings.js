@@ -6,6 +6,7 @@ const readingsReducer = (state, action) => {
       return [
         ...state,
         {
+          id:action.id,
           date:action.date,
           dayReading:action.dayReading,
           nightReading:action.nightReading
