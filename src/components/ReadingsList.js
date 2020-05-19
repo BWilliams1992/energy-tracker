@@ -4,7 +4,6 @@ import ReadingsContext from '../context/readings-context'
 
 const ReadingsList = () => {
   const { readings } = useContext(ReadingsContext)
-
   const sortedReadings = readings.sort((a ,b) => {
     if ( a.date > b.date ) {
       return -1
@@ -16,7 +15,7 @@ const ReadingsList = () => {
   })
 
   return sortedReadings.map((reading) => (
-    <Reading key={reading.date} reading={reading} />
+    <Reading key={reading.id} reading={reading} />
   ))
 }
 

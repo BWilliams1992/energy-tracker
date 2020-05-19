@@ -4,7 +4,6 @@ import ReadingsContext from '../context/readings-context'
 
 const Reading = ({ reading }) => {
   const { dispatch } = useContext(ReadingsContext)
-
   return (
     <div>
       <h3>Date: {moment(reading.date).format('DD-MM-YYYY')}</h3>
