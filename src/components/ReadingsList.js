@@ -14,9 +14,14 @@ const ReadingsList = () => {
     }
   })
 
-  return sortedReadings.map((reading) => (
-    <Reading key={reading.id} reading={reading} />
-  ))
+  return (
+    <div className="content-container">
+      { sortedReadings.map((reading) => (
+          <Reading key={reading.id} reading={reading} />
+        ))}
+    </div>
+  )
+  
 }
 
 export default ReadingsList 

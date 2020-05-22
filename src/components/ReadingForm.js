@@ -43,7 +43,7 @@ const ReadingForm = () => {
       setNightReading('')
   }
   return (
-    <form onSubmit={addReading}>
+    <form className="content-container" onSubmit={addReading}>
       <label htmlFor="date">Date</label>
       <input 
         type="text" 

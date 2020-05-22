@@ -3,7 +3,9 @@ import readingsReducer from '../reducers/readings'
 import ReadingsContext from '../context/readings-context'
 import ReadingsList from './ReadingsList'
 import ReadingForm from './ReadingForm'
-import Bill from './Bill'
+import DateSelector from './DateSelector'
+
+import './styles/styles.css'
 
 const EnergyTrackerApp = () => {
   const [ readings, dispatch ] = useReducer(readingsReducer, [] )
@@ -19,13 +21,12 @@ const EnergyTrackerApp = () => {
   useEffect(() => {
     localStorage.setItem('readings', JSON.stringify(readings))
   },[readings])
-  console.log(readings)
+
   return (
     <ReadingsContext.Provider value={{ readings, dispatch }}>
-      <h1>Energy Tracker</h1>
-      <Bill />
-      <ReadingsList />
+      <DateSelector />
       <ReadingForm />
+      <ReadingsList />
     </ReadingsContext.Provider>
   )
 }
