@@ -19,7 +19,7 @@ const DateSelector = (props) => {
   return (
     <div className="content-container">
       <h1 className ="title">Energy Tracker</h1>
-      <select id='reading-one-selector' onChange={(e) => {
+      <select className="selector" id='reading-one-selector' onChange={(e) => {
         setReadingOne(readings.filter((reading) => {
           if(reading.id === e.target.value) {
             return reading
@@ -36,7 +36,7 @@ const DateSelector = (props) => {
         })
       }
       </select>
-      <select id='reading-two-selector' onChange={(e) => {
+      <select className="selector" id='reading-two-selector' onChange={(e) => {
         setReadingTwo(readings.filter((reading) => {
           if(reading.id === e.target.value) {
             return reading
@@ -53,7 +53,7 @@ const DateSelector = (props) => {
       }
       </select>
 
-      <button onClick={() => {setBill( () => {
+      <button className="button" onClick={() => {setBill( () => {
         if (readingOne && readingTwo) {
           return calculateBill(readingOne[0],readingTwo[0])
         }

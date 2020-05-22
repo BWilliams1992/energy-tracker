@@ -31,6 +31,23 @@
   margin: 0;
 }
 
+.selector {
+  margin-left: .2rem;
+  padding: .4rem;
+  font-size: 100%;
+  font-weight: 600;
+  background: #faf2c8;
+}
+
+.button {
+  border: none;
+  padding: .5rem;
+  margin: 0 .2rem;
+  color: white;
+  background: #248ced;
+  font-weight: 600;
+}
+
 body {
   background: #a3a3a3;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
