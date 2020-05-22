@@ -1,6 +1,6 @@
 .content-container {
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: .3rem 2rem;
   max-width: 80rem;
   background: #808080;
 }
@@ -46,6 +46,15 @@
   color: white;
   background: #248ced;
   font-weight: 600;
+}
+
+.settings__title {
+  margin:0;
+}
+
+.settings__title:hover {
+  cursor: pointer;
+  background:  #4949497c;
 }
 
 body {
