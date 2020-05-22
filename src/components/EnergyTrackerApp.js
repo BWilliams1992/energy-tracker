@@ -3,7 +3,7 @@ import readingsReducer from '../reducers/readings'
 import ReadingsContext from '../context/readings-context'
 import ReadingsList from './ReadingsList'
 import ReadingForm from './ReadingForm'
-import DateSelector from './DateSelector'
+import Bill from './Bill'
 
 import './styles/styles.css'
 
@@ -24,7 +24,7 @@ const EnergyTrackerApp = () => {
 
   return (
     <ReadingsContext.Provider value={{ readings, dispatch }}>
-      <DateSelector />
+      <Bill />
       <ReadingForm />
       <ReadingsList />
     </ReadingsContext.Provider>
