@@ -43,20 +43,25 @@ const ReadingForm = () => {
       setNightReading('')
   }
   return (
-    <form className="content-container" onSubmit={addReading}>
-      <label htmlFor="date">Date</label>
-      <input 
-        type="text" 
-        name="date"
-        value={date} 
-        onChange={onDateChange}
-      />
-      <label htmlFor="day-reading">Day reading</label>
-      <input type="text" name="day-reading" value={dayReading} onChange={onDayReadingChange} />
-      <label htmlFor="night-reading">Night reading</label>
-      <input type="text" name="night-reading" value={nightReading} onChange={onNightReadingChange} />
-      <button>Submit</button>
-    </form>
+    <div className="content-container content-container--centered">
+      <div>
+        <h2>Add new reading</h2>
+        <form className="form" onSubmit={addReading}>
+          <label htmlFor="date">Date</label>
+          <input 
+            type="text" 
+            name="date"
+            value={date} 
+            onChange={onDateChange}
+          />
+          <label htmlFor="day-reading">Day reading</label>
+          <input type="text" name="day-reading" value={dayReading} onChange={onDayReadingChange} />
+          <label htmlFor="night-reading">Night reading</label>
+          <input type="text" name="night-reading" value={nightReading} onChange={onNightReadingChange} />
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
   )
 }
 

@@ -2,4 +2,36 @@
   margin: 0 auto;
   padding: 0 2rem;
   max-width: 80rem;
+  background: #808080;
+}
+
+.content-container--centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reading {
+  border-top: 2px solid black;
+  margin: 0;
+  padding: .3rem;
+}
+
+.title {
+  margin:  .3rem; 
+  padding: 1rem 0;
+  font-weight: bolder;
+}
+.form {
+  padding: .5rem 0;
+  margin: .5rem 0;
+}
+
+.bill{
+  margin: 0;
+}
+
+body {
+  background: #a3a3a3;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }

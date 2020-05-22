@@ -18,7 +18,7 @@ const DateSelector = (props) => {
   }
   return (
     <div className="content-container">
-      <h1>Energy Tracker</h1>
+      <h1 className ="title">Energy Tracker</h1>
       <select id='reading-one-selector' onChange={(e) => {
         setReadingOne(readings.filter((reading) => {
           if(reading.id === e.target.value) {
@@ -60,7 +60,7 @@ const DateSelector = (props) => {
       })}}>
       Calculate
       </button>
-      {bill && <p>Bill:£{bill.toFixed(2)}</p>}
+      {bill && <h2 className="bill">Bill:£{bill.toFixed(2)}</h2>}
     </div>
 
   )
