@@ -1,68 +1,77 @@
-import React, { useState, useContext} from 'react'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
-import ReadingsContext from '../context/readings-context'
 
+export default class ReadingForm extends React.Component {
+  constructor(props) {
+    super(props)
 
-const ReadingForm = () => {
-  const { dispatch } = useContext(ReadingsContext)
-  const [ date, setDate] = useState('')
-  const [ dayReading, setDayReading ] = useState('')
-  const [ nightReading, setNightReading] =useState('')
-
-  const onDayReadingChange = (e) => {
+    this.state = {
+      date: '',
+      dayReading: 0,
+      nightReading: 0
+    }
+  }
+  onDayReadingChange = (e) => {
     const dayReading = (e.target.value)
     if (!dayReading || dayReading.match(/^[0-9]*$/)) {
-      setDayReading(dayReading) 
+      this.setState(() => ({ dayReading })) 
     }
   }
-  const onNightReadingChange = (e) => {
+  onNightReadingChange = (e) => {
     const nightReading = (e.target.value)
     if (!nightReading || nightReading.match(/^[0-9]*$/)) {
-      setNightReading(nightReading) 
+      this.setState(() => ({ nightReading }))
     }
   }
 
-  const onDateChange = (e) => {
+  onDateChange = (e) => {
     const date = (e.target.value)
     if (!date || date.match(/^\d{0,2}-{0,1}\d{0,2}-{0,1}\d{0,4}$/)) {
-      setDate(date) 
+      this.setState(() => ({ date })) 
     }
   }
-  const addReading = (e) => {
+  onSubmit = (e) => {
     e.preventDefault()
-    dispatch({
-        type: 'ADD_READING',
-        id:uuidv4(),
-        date:moment(date,'DD-MM-YYYY').valueOf(),
-        dayReading,
-        nightReading
-      })
-
-      setDayReading('')
-      setNightReading('')
+    this.props.onSubmit({
+      id: uuidv4(),
+      date:moment(this.state.date,'DD-MM-YYYY').valueOf(),
+      dayReading:parseFloat(this.state.dayReading),
+      nightReading:parseFloat(this.state.nightReading)
+    })
   }
-  return (
-    <div className="content-container content-container--centered">
-      <div>
-        <h2>Add new reading</h2>
-        <form className="form" onSubmit={addReading}>
-          <label htmlFor="date">Date</label>
-          <input 
-            type="text" 
-            name="date"
-            value={date} 
-            onChange={onDateChange}
-          />
-          <label htmlFor="day-reading">Day reading</label>
-          <input type="text" name="day-reading" value={dayReading} onChange={onDayReadingChange} />
-          <label htmlFor="night-reading">Night reading</label>
-          <input type="text" name="night-reading" value={nightReading} onChange={onNightReadingChange} />
-          <button>Submit</button>
-        </form>
+  render() {
+    return (
+      <div className="content-container content-container--centered">
+        <div>
+          <h2>Add new reading</h2>
+          <form className="form" onSubmit={this.onSubmit}>
+            <label htmlFor="date">Date</label>
+            <input 
+              type="text" 
+              name="date"
+              value={this.state.date} 
+              onChange={this.onDateChange}
+            />
+            <label htmlFor="day-reading">Day reading</label>
+            <input 
+              type="text" 
+              name="day-reading" 
+              value={this.state.dayReading} 
+              onChange={this.onDayReadingChange} 
+            />
+            <label htmlFor="night-reading">Night reading</label>
+            <input 
+              type="text" 
+              name="night-reading" 
+              value={this.state.nightReading} 
+              onChange={this.onNightReadingChange} 
+            />
+            <button>Submit</button>
+          </form>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+  
 }
-
-export default ReadingForm

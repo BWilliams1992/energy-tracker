@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import ReadingsContext from '../context/readings-context'
 
 const Settings = () => {
-  const { settings, settingsDispatch } =useContext(ReadingsContext)
+  const { settingsDispatch } =useContext(ReadingsContext)
   const [ dayRate, setDayRate ] = useState()
   const [ nightRate, setNightRate ] = useState()
   const [ standingCharge, setStandingCharge ] = useState()
   const [ visible, setVisible ] = useState(false)
-  const [ error, setError ] =useState('')
+  const [ error, setError ] = useState('')
 
   const onDayRateChange = (e) => {
     const dayRate = (e.target.value)

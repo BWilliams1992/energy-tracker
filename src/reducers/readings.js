@@ -1,16 +1,13 @@
-const readingsReducer = (state, action) => {
+const readingsReducerDefaultState = []
+
+const readingsReducer = (state = readingsReducerDefaultState, action) => {
   switch (action.type) {
     case 'POPULATE_READINGS':
       return action.readings
     case 'ADD_READING': 
       return [
         ...state,
-        {
-          id:action.id,
-          date:action.date,
-          dayReading:action.dayReading,
-          nightReading:action.nightReading
-        }
+        action.reading
       ]
     case 'REMOVE_READING' :
         return state.filter((reading) => reading.date !== action.date)

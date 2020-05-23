@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import moment from 'moment'
-import ReadingsContext from '../context/readings-context'
 
-const Reading = ({ reading }) => {
-  const { dispatch } = useContext(ReadingsContext)
+const Reading = ({ id, date, dayReading, nightReading}) => {
   return (
     <div className="reading">
-      <h3>Date: {moment(reading.date).format('DD-MM-YYYY')}</h3>
-      <p>Day reading: {reading.dayReading}</p>
-      <p>Night reading: {reading.nightReading}</p>
-      <button onClick={() => dispatch({ type: 'REMOVE_READING', date: reading.date})}>Remove</button>
+      <h3>Date: {moment(date).format('DD-MM-YYYY')}</h3>
+      <p>Day reading: {dayReading}</p>
+      <p>Night reading: {nightReading}</p>
     </div>
   )
 }
