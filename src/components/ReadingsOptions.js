@@ -1,14 +1,27 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
-import ReadingsContext from '../context/readings-context'
 
-const ReadingsOptions = () => {
-  const { readings } = useContext(ReadingsContext)
+export const ReadingsOptions = (props) => {
+  const sortedReadings = props.readings.sort((a ,b) => {
+    if ( a.date > b.date ) {
+      return -1
+    } if (a.date < b.date ) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+
   return (
-    readings.map((reading) => {
+    sortedReadings.map((reading) => {
       return <option key={reading.id} value={reading.id}>{moment(reading.date).format('DD-MM-YYYY')}</option>
     })
   )
 }
 
-export default ReadingsOptions
+const mapStateToProps = (state) => ({
+  readings: state.readings
+}) 
+
+export default connect(mapStateToProps)(ReadingsOptions)

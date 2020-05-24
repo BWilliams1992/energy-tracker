@@ -4,19 +4,19 @@ import Reading from './Reading'
 
 export const ReadingsList = (props) => {
  
-  // const sortedReadings = readings.sort((a ,b) => {
-  //   if ( a.date > b.date ) {
-  //     return -1
-  //   } if (a.date < b.date ) {
-  //     return 1
-  //   } else {
-  //     return 0
-  //   }
-  // })
+  const sortedReadings = props.readings.sort((a ,b) => {
+    if ( a.date > b.date ) {
+      return -1
+    } if (a.date < b.date ) {
+      return 1
+    } else {
+      return 0
+    }
+  })
 
   return (
     <div className="content-container">
-      { props.readings.map((reading) => (
+      { sortedReadings.map((reading) => (
           <Reading key={reading.id} {...reading} />
         ))}
     </div>

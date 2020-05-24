@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => (
-  <div> 
+  <div className="content-container"> 
     <h1>Energy Tracker</h1>
     <NavLink to="/">Dashboard</NavLink>
     <NavLink to="/settings">Settings</NavLink>

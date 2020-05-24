@@ -1,25 +1,34 @@
-import React, { useContext } from 'react'
-import moment from 'moment'
-import ReadingsContext from '../context/readings-context'
-import BillsContext from '../context/bills-context'
+import React from 'react'
+import { connect } from 'react-redux'
+import { setReadingTwo } from '../actions/bills'
+import ReadingsOptions from './ReadingsOptions'
 
-const DatePicker = (props) => {
-  const { readings } =useContext(ReadingsContext)
-  const { setReadingTwo } =useContext(BillsContext)
+class EndDatePicker extends React.Component {
+  onChange = (e) => {
+    const readingIndex = this.props.readings.findIndex((reading) => reading.id === e.target.value)
+    this.props.setReadingTwo(this.props.readings[readingIndex])
+  }
 
-  return (
-    <select className="selector" id='reading-one-selector' onChange={(e) => {
-      const readingIndex = readings.findIndex((reading) => reading.id === e.target.value)
-      setReadingTwo(readings[readingIndex])
-    }}>
-      <option>End Date</option>
-      {
-        readings.map((reading) => {
-        return <option key={reading.id} value={reading.id}>{moment(reading.date).format('DD-MM-YYYY')}</option>
-      })
-    }
-    </select>
-  )
+  render() {
+    return (
+      <select 
+        className="selector" 
+        id='reading-one-selector'
+        onChange={this.onChange}
+      >
+        <option>End date</option>
+        <ReadingsOptions />
+      </select>
+    )
+  }
 }
 
-export default DatePicker
+const mapStateToProps = (state) => ({
+  readings:state.readings
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setReadingTwo: (reading) => dispatch(setReadingTwo(reading))
+}) 
+
+export default connect(mapStateToProps,mapDispatchToProps)(EndDatePicker)
