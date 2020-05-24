@@ -7,9 +7,10 @@ export default class ReadingForm extends React.Component {
     super(props)
 
     this.state = {
-      date: '',
-      dayReading: 0,
-      nightReading: 0
+      date: props.reading ? moment(props.reading.date).format('DD-MM-YYYY') : '',
+      dayReading: props.reading ? props.reading.dayReading : 0,
+      nightReading: props.reading ? props.reading.nightReading : 0,
+      error: ''
     }
   }
   onDayReadingChange = (e) => {
@@ -33,41 +34,50 @@ export default class ReadingForm extends React.Component {
   }
   onSubmit = (e) => {
     e.preventDefault()
-    this.props.onSubmit({
-      id: uuidv4(),
-      date:moment(this.state.date,'DD-MM-YYYY').valueOf(),
-      dayReading:parseFloat(this.state.dayReading),
-      nightReading:parseFloat(this.state.nightReading)
-    })
+    if ( !this.state.date || !this.state.dayReading || !this.state.nightReading ) {
+      this.setState(() => ({error: 'Please enter a date, day reading and night reading'}))
+    } else {
+      this.setState(() => ({error:''}))
+      this.props.onSubmit({
+        id: uuidv4(),
+        date:moment(this.state.date,'DD-MM-YYYY').valueOf(),
+        dayReading:parseFloat(this.state.dayReading),
+        nightReading:parseFloat(this.state.nightReading)
+      })
+    }
+    
   }
   render() {
     return (
-      <div className="content-container content-container--centered">
+      <div >
         <div>
-          <h2>Add new reading</h2>
           <form className="form" onSubmit={this.onSubmit}>
-            <label htmlFor="date">Date</label>
+            {this.state.error && <p>Error:{this.state.error}</p>}
+            <label className="form-label" htmlFor="date">Date</label>
             <input 
+              className="form-input"
               type="text" 
               name="date"
               value={this.state.date} 
               onChange={this.onDateChange}
             />
-            <label htmlFor="day-reading">Day reading</label>
+            <label className="form-label" htmlFor="day-reading">Day reading</label>
             <input 
+              className="form-input"
               type="text" 
               name="day-reading" 
               value={this.state.dayReading} 
               onChange={this.onDayReadingChange} 
             />
-            <label htmlFor="night-reading">Night reading</label>
+            <label className="form-label" htmlFor="night-reading">Night reading</label>
             <input 
+              className="form-input"
               type="text" 
               name="night-reading" 
               value={this.state.nightReading} 
               onChange={this.onNightReadingChange} 
             />
-            <button>Submit</button>
+            <button className="button">Submit</button>
           </form>
         </div>
       </div>

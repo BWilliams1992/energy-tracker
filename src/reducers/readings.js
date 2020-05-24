@@ -9,8 +9,19 @@ const readingsReducer = (state = readingsReducerDefaultState, action) => {
         ...state,
         action.reading
       ]
+    case 'EDIT_READING' :
+      return state.map((reading) => {
+        if (reading.id === action.id){
+          return {
+            ...reading,
+            ...action.updates
+          }
+        } else {
+          return reading
+        }
+      })
     case 'REMOVE_READING' :
-        return state.filter((reading) => reading.date !== action.date)
+        return state.filter((reading) => reading.id !== action.id)
     default:
       return state
   }

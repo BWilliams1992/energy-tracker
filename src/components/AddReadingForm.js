@@ -9,10 +9,13 @@ export class AddReadingForm extends React.Component {
   }
   render() {
     return (
-      <div>
-        <ReadingsForm
-          onSubmit={this.onSubmit}
-        />
+      <div className="content-container">
+        <div className="form-container">
+          <h2>Add new reading:</h2>
+          <ReadingsForm
+            onSubmit={this.onSubmit}
+          />
+       </div>
       </div>
     )
   }

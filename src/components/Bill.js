@@ -35,8 +35,8 @@ export class Bill extends React.Component {
         <div className="content-container">
         <StartDatePicker />
         <EndDatePicker />
-        <button onClick={this.clicker}>Click me!</button>
-        { this.state.bill && <h3>Bill: {this.state.bill}</h3>}
+        <button className="button" onClick={this.clicker}>Calculate Bill!</button>
+        { this.state.bill && <h3>Bill: £{this.state.bill.toFixed(2)}</h3>}
         </div>
     )
   }

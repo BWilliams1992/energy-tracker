@@ -12,7 +12,6 @@ export class SettingsPage extends React.Component {
   render() {
     return (
       <div> 
-        Settings Page
         <SettingsForm settings={this.props.settings} onSubmit={this.onSubmit} />
       </div>
     )

@@ -14,8 +14,14 @@ export const addReading = ( {id='',date='', dayReading= 0, nightReading =0 } = {
     nightReading
   }
 })
+//EDIT_READING 
+export const editReading = (id ,updates) => ({
+  type:'EDIT_READING',
+  id,
+  updates
+})
 // //REMOVE_READING
-// const removeReading = ( { id } = { } ) => ({
-//   type: 'REMOVE_READING',
-//   id
-// })
+export const removeReading = ( id ) => ({
+  type: 'REMOVE_READING',
+  id
+})
