@@ -10,11 +10,23 @@
   justify-content: center;
   align-items: center;
 }
+
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
+
+@media screen and (min-width: 1200px) {
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
 .reading {
   display: flex;
   justify-content: space-between;
@@ -48,19 +60,44 @@
   font-size: 3rem;
 }
 .form {
+  border-top:2px solid black;
+  display: flex;
+  flex-direction: column;
+  width:100%;
   padding: .5rem 0;
   margin: .5rem 0;
 }
-
 .form-label {
- font-weight: bold;
- font-size: 1.2rem;
-}
+  font-weight: bold;
+  font-size: 1.2rem;
+ }
 .form-input {
   border: none;
+  width: auto;
   padding: .5rem;
   margin: .2rem;
 }
+@media screen and (min-width: 900px) {
+  .form {
+    width:auto;
+    border-top: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .5rem 0;
+    margin: .5rem 0;
+  }
+  .form-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+   }
+  .form-input {
+    border: none;
+    padding: .5rem;
+    margin: .2rem;
+  }
+}
+
 .bill{
   margin: 0;
 }

@@ -49,8 +49,6 @@ export default class ReadingForm extends React.Component {
   }
   render() {
     return (
-      <div >
-        <div>
           <form className="form" onSubmit={this.onSubmit}>
             {this.state.error && <p>Error:{this.state.error}</p>}
             <label className="form-label" htmlFor="date">Date</label>
@@ -79,8 +77,6 @@ export default class ReadingForm extends React.Component {
             />
             <button className="button">Submit</button>
           </form>
-        </div>
-      </div>
     )
   }
   
