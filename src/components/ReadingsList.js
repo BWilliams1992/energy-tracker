@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import Reading from './Reading'
-import ReadingsContext from '../context/readings-context'
 
-const ReadingsList = () => {
-  const { readings } = useContext(ReadingsContext)
-  const sortedReadings = readings.sort((a ,b) => {
+export const ReadingsList = (props) => {
+ 
+  const sortedReadings = props.readings.sort((a ,b) => {
     if ( a.date > b.date ) {
       return -1
     } if (a.date < b.date ) {
@@ -17,11 +17,17 @@ const ReadingsList = () => {
   return (
     <div className="content-container">
       { sortedReadings.map((reading) => (
-          <Reading key={reading.id} reading={reading} />
+          <Reading key={reading.id} {...reading} />
         ))}
     </div>
   )
   
 }
 
-export default ReadingsList 
+const mapStateToProps = (state) => {
+  return {
+    readings: state.readings
+  }
+}
+
+export default connect(mapStateToProps)(ReadingsList)

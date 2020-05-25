@@ -1,17 +1,27 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
-import ReadingsContext from '../context/readings-context'
+import { Link } from 'react-router-dom'
+import { removeReading } from '../actions/readings'
 
-const Reading = ({ reading }) => {
-  const { dispatch } = useContext(ReadingsContext)
+export const Reading = ({ id, date, dayReading, nightReading, removeReading}) => {
+  const onClick = () => {
+    removeReading(id)
+  }
   return (
     <div className="reading">
-      <h3>Date: {moment(reading.date).format('DD-MM-YYYY')}</h3>
-      <p>Day reading: {reading.dayReading}</p>
-      <p>Night reading: {reading.nightReading}</p>
-      <button onClick={() => dispatch({ type: 'REMOVE_READING', date: reading.date})}>Remove</button>
+      <Link className="reading__link" to={`/edit/${id}`}>
+        <h3>Date: {moment(date).format('DD-MM-YYYY')}</h3>
+        <p>Day reading: {dayReading}</p>
+        <p>Night reading: {nightReading}</p>
+      </Link>
+      <button className="reading__button" onClick={onClick}>Remove</button>
     </div>
   )
 }
 
-export default Reading
+const mapDispatchToProps = (dispatch) =>({
+  removeReading: (id) => dispatch(removeReading(id))
+})
+
+export default connect(undefined,mapDispatchToProps)(Reading)

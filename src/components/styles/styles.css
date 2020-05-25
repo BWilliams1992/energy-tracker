@@ -10,33 +10,66 @@
   justify-content: center;
   align-items: center;
 }
-
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .reading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-top: 2px solid black;
   margin: 0;
   padding: .3rem;
+}
+
+.reading:hover {
+  background:#686868;
+}
+
+.reading__button {
+  border: none;
+  padding: 1.2rem;
+  margin: .3rem;
+  background: #4949497c;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.reading__link {
+  text-decoration: none;
+  color: black;
 }
 
 .title {
   margin:  .3rem; 
   padding: 1rem 0;
   font-weight: bolder;
+  font-size: 3rem;
 }
 .form {
   padding: .5rem 0;
   margin: .5rem 0;
 }
 
+.form-label {
+ font-weight: bold;
+ font-size: 1.2rem;
+}
+.form-input {
+  border: none;
+  padding: .5rem;
+  margin: .2rem;
+}
 .bill{
   margin: 0;
 }
 
 .selector {
   margin-left: .2rem;
-  padding: .4rem;
+  padding: .5rem;
   font-size: 100%;
   font-weight: 600;
-  background: #faf2c8;
 }
 
 .button {
@@ -55,6 +88,24 @@
 .settings__title:hover {
   cursor: pointer;
   background:  #4949497c;
+}
+
+.nav-bar {
+  display: flex;
+  background: #3f3f3f;
+  justify-content: space-evenly;
+  border-top: 3px solid black;
+  border-bottom:3px solid black;
+  padding: .3rem;
+  margin: .1rem;
+}
+.nav-item {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+.nav-item:hover {
+  font-weight: bold;
 }
 
 body {
